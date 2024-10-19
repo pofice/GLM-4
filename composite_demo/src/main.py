@@ -28,8 +28,8 @@ from tools.tool_registry import dispatch_tool, get_tools
 from utils import extract_pdf, extract_docx, extract_pptx, extract_text
 
 
-CHAT_MODEL_PATH = os.environ.get("CHAT_MODEL_PATH", "THUDM/glm-4-9b-chat")
-VLM_MODEL_PATH = os.environ.get("VLM_MODEL_PATH", "THUDM/glm-4v-9b")
+CHAT_MODEL_PATH = os.environ.get("CHAT_MODEL_PATH", "/media/pofice/PM1725A/pofice/GLM-4/glm-4-9b-chat/")
+VLM_MODEL_PATH = os.environ.get("VLM_MODEL_PATH", "/media/pofice/PM1725A/pofice/GLM-4/glm-4v-9b/")
 
 USE_VLLM = os.environ.get("USE_VLLM", "0") == "1"
 USE_API = os.environ.get("USE_API", "0") == "1"
@@ -56,14 +56,14 @@ st.set_page_config(
     page_title="GLM-4 Demo",
     page_icon=":robot:",
     layout="centered",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
-st.title("GLM-4 Demo")
-st.markdown(
-    "<sub>智谱AI 公开在线技术文档: https://zhipu-ai.feishu.cn/wiki/RuMswanpkiRh3Ok4z5acOABBnjf </sub> \n\n <sub> 更多 GLM-4 开源模型的使用方法请参考文档。</sub>",
-    unsafe_allow_html=True,
-)
+st.title("智能计算，无限可能")
+# st.markdown(
+#     "<sub>智谱AI 公开在线技术文档: https://zhipu-ai.feishu.cn/wiki/RuMswanpkiRh3Ok4z5acOABBnjf </sub> \n\n <sub> 更多 GLM-4 开源模型的使用方法请参考文档。</sub>",
+#     unsafe_allow_html=True,
+# )
 
 with st.sidebar:
     top_p = st.slider("top_p", 0.0, 1.0, 0.8, step=0.01)
@@ -135,7 +135,7 @@ page = st.radio(
 )
 
 HELP = """
-### 🎉 欢迎使用 GLM-4!
+### 🎉 欢迎使用AI Demo!
 
 请在上方选取一个功能。每次切换功能时，将会重新加载模型并清空对话历史。
 
@@ -193,7 +193,7 @@ elif page == Mode.VLM:
         else:
             st.session_state.uploaded_image = None
 
-prompt_text = st.chat_input("Chat with GLM-4!", key="chat_input")
+prompt_text = st.chat_input("开始聊天吧！", key="chat_input")
 
 if prompt_text == "" and retry == False:
     print("\n== Clean ==\n")
